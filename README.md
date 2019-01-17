@@ -1,5 +1,6 @@
 # NavCoffee
 Software for the NavCoffee Twitch livestream, running on a Raspberry Pi
+The livestream can be found at twitch.tv/navcoffee
 
 To recreate this project you will need:
  - A raspberry pi (Raspberry Pi 3 Model B was used) with Raspbian
