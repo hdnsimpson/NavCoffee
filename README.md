@@ -2,6 +2,9 @@
 Software for the NavCoffee Twitch livestream, running on a Raspberry Pi
 The livestream can be found at twitch.tv/navcoffee
 
+This project was created by the NavCoin Core summer interns of 2018/19 to engage with the community
+This repo has been created to allow community members to recreate the livestream themselves
+
 To recreate this project you will need:
  - A raspberry pi (Raspberry Pi 3 Model B was used) with Raspbian
  - A usb webcam
