@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# THIS WAY OF OBTAINING WALLET INFORMATION IS NOW DEPRECATED
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
