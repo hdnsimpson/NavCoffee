@@ -45,18 +45,20 @@ def coffee_available():
     GPIO.setup(COFFEE_AVAILABLE_LED_PIN, GPIO.OUT)
     redeem_file = open("/home/pi/Documents/redemptions.txt", "r")
     redemptions = int(redeem_file.readline())
+    redeem_file.close()
 
     coffee_file = open("/home/pi/Documents/coffees_donated.txt", "r")
     coffees = int(coffee_file.readline())
+    coffee_file.close()
     
     if coffees > redemptions:
         GPIO.output(COFFEE_AVAILABLE_LED_PIN, True)
     else:
         GPIO.output(COFFEE_AVAILABLE_LED_PIN, False)
-
-    redeem_file.close()
-    coffee_file.close()
-
+        
+def check_wallet():
+    threading.Timer(5.0, check_wallet).start()
+    subprocess.Popen("/home/pi/Documents/query_wallet.sh")
 
 def setup_buttons():
     global start_button, stop_button, redeem_button
@@ -78,6 +80,7 @@ def setup_buttons():
     GPIO.setup(COFFEE_AVAILABLE_LED_PIN, GPIO.OUT)
     GPIO.output(COFFEE_AVAILABLE_LED_PIN, False)
 
+    check_wallet()
     coffee_available()
 
     print("Ready")
