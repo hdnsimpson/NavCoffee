@@ -57,7 +57,7 @@ def coffee_available():
         GPIO.output(COFFEE_AVAILABLE_LED_PIN, False)
         
 def check_wallet():
-    threading.Timer(5.0, check_wallet).start()
+    threading.Timer(30.0, check_wallet).start()
     subprocess.Popen("/home/pi/Documents/query_wallet.sh")
 
 def setup_buttons():
