@@ -31,3 +31,6 @@ coffees="$(echo $(("${total_received}" / 5)))"
 echo "${coffees}" > /home/pi/Documents/coffees_donated.txt.tmp
 perl -pi -e 'chomp if eof' /home/pi/Documents/coffees_donated.txt.tmp
 mv /home/pi/Documents/coffees_donated.txt.tmp /home/pi/Documents/coffees_donated.txt
+
+# Format redemptions
+perl -pi -e 'chomp if eof' /home/pi/Documents/redemptions.txt
