@@ -9,15 +9,17 @@ data="$(wget -qO- https://www.navexplorer.com/address/NgZNDCxF8DGzxjPi5NiUcHGkKh
 donations="$(echo "${data}" | tr ',' $'\n' | grep -c RECEIVE)"
 
 # Write to donations file
-echo "${donations}" > /home/pi/Documents/donations.txt
-perl -pi -e 'chomp if eof' /home/pi/Documents/donations.txt
+echo "${donations}" > /home/pi/Documents/donations.txt.tmp
+perl -pi -e 'chomp if eof' /home/pi/Documents/donations.txt.tmp
+mv /home/pi/Documents/donations.txt.tmp /home/pi/Documents/donations.txt
 
 # Get amount donated
 received_amounts="$(echo "${data}" | tr ',' $'\n' | grep '"received":' | cut -d':' -f 2)"
 
 # Write transaction history to file
-echo "${received_amounts}" > /home/pi/Documents/txn_history.txt
-perl -pi -e 'chomp if eof' /home/pi/Documents/txn_history.txt
+echo "${received_amounts}" > /home/pi/Documents/txn_history.txt.tmp
+perl -pi -e 'chomp if eof' /home/pi/Documents/txn_history.txt.tmp
+mv /home/pi/Documents/txn_history.txt.tmp /home/pi/Documents/txn_history.txt
 
 # Sum donations
 total_received="$(LC_NUMERIC="C" awk '{sum += $1} END {print sum}' txn_history.txt)"
@@ -26,5 +28,6 @@ total_received="$(LC_NUMERIC="C" awk '{sum += $1} END {print sum}' txn_history.t
 coffees="$(echo $(("${total_received}" / 5)))"
 
 # Write coffees donated
-echo "${coffees}" > /home/pi/Documents/coffees_donated.txt
-perl -pi -e 'chomp if eof' /home/pi/Documents/coffees_donated.txt
+echo "${coffees}" > /home/pi/Documents/coffees_donated.txt.tmp
+perl -pi -e 'chomp if eof' /home/pi/Documents/coffees_donated.txt.tmp
+mv /home/pi/Documents/coffees_donated.txt.tmp /home/pi/Documents/coffees_donated.txt
