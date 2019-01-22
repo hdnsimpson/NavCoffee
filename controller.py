@@ -6,6 +6,7 @@ from gpiozero import Button, LED
 from time import sleep, time
 import RPi.GPIO as GPIO
 import threading
+import os
 
 START_BUTTON_PIN = 17
 STOP_BUTTON_PIN = 27
@@ -35,9 +36,11 @@ def redeem():
     redemptions = int(redemptions) + 1
     redeem_file.close()
 
-    redeem_file = open("redemptions.txt", "w")
-    redeem_file.write(str(redemptions))
-    redeem_file.close()
+    redeem_file_tmp = open("redemptions.txt.tmp", "w")
+    redeem_file_tmp.write(str(redemptions))
+    redeem_file_tmp.close()
+
+    os.rename('redemptions.txt.tmp', 'redemptions.txt')
 
 def coffee_available():
     threading.Timer(5.0, coffee_available).start()
