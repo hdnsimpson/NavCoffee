@@ -31,10 +31,14 @@ def stop():
 
 def redeem():
     print("Redeeming cofee")
-    redeem_file = open("/home/pi/Documents/redemptions.txt", "r")
+    redeem_file = open("/home/pi/Documents/redemptions2.txt", "r")
     redemptions = redeem_file.readline()
     redemptions = int(redemptions) + 1
     redeem_file.close()
+    
+    redeem_file2 = open("redemptions2.txt", "w")
+    redeem_file2.write(str(redemptions))
+    redeem_file2.close()
 
     redeem_file_tmp = open("redemptions.txt.tmp", "w")
     redeem_file_tmp.write(str(redemptions))
@@ -46,11 +50,11 @@ def coffee_available():
     threading.Timer(5.0, coffee_available).start()
 
     GPIO.setup(COFFEE_AVAILABLE_LED_PIN, GPIO.OUT)
-    redeem_file = open("/home/pi/Documents/redemptions.txt", "r")
+    redeem_file = open("/home/pi/Documents/redemptions2.txt", "r")
     redemptions = int(redeem_file.readline())
     redeem_file.close()
 
-    coffee_file = open("/home/pi/Documents/coffees_donated.txt", "r")
+    coffee_file = open("/home/pi/Documents/coffees_donated2.txt", "r")
     coffees = int(coffee_file.readline())
     coffee_file.close()
     

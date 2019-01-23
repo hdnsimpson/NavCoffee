@@ -29,8 +29,12 @@ coffees="$(echo $(("${total_received}" / 5)))"
 
 # Write coffees donated
 echo "${coffees}" > /home/pi/Documents/coffees_donated.txt.tmp
+echo "${coffees}" > /home/pi/Documents/coffees_donated2.txt.tmp
 perl -pi -e 'chomp if eof' /home/pi/Documents/coffees_donated.txt.tmp
+perl -pi -e 'chomp if eof' /home/pi/Documents/coffees_donated2.txt.tmp
 mv /home/pi/Documents/coffees_donated.txt.tmp /home/pi/Documents/coffees_donated.txt
+mv /home/pi/Documents/coffees_donated2.txt.tmp /home/pi/Documents/coffees_donated2.txt
 
-# Format redemptions
+# Format other files
 perl -pi -e 'chomp if eof' /home/pi/Documents/redemptions.txt
+perl -pi -e 'chomp if eof' /home/pi/Documents/redemptions2.txt
