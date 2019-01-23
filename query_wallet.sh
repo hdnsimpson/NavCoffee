@@ -10,8 +10,11 @@ donations="$(echo "${data}" | tr ',' $'\n' | grep -c RECEIVE)"
 
 # Write to donations file
 echo "${donations}" > /home/pi/Documents/donations.txt.tmp
+echo "${donations}" > /home/pi/Documents/donations2.txt.tmp
 perl -pi -e 'chomp if eof' /home/pi/Documents/donations.txt.tmp
+perl -pi -e 'chomp if eof' /home/pi/Documents/donations2.txt.tmp
 mv /home/pi/Documents/donations.txt.tmp /home/pi/Documents/donations.txt
+mv /home/pi/Documents/donations2.txt.tmp /home/pi/Documents/donations2.txt
 
 # Get amount donated
 received_amounts="$(echo "${data}" | tr ',' $'\n' | grep '"received":' | cut -d':' -f 2)"
