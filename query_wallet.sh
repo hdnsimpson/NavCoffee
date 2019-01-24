@@ -39,5 +39,6 @@ mv /home/pi/Documents/coffees_donated.txt.tmp /home/pi/Documents/coffees_donated
 mv /home/pi/Documents/coffees_donated2.txt.tmp /home/pi/Documents/coffees_donated2.txt
 
 # Format other files
-perl -pi -e 'chomp if eof' /home/pi/Documents/redemptions.txt
 perl -pi -e 'chomp if eof' /home/pi/Documents/redemptions2.txt
+cat /home/pi/Documents/redemptions2.txt > /home/pi/Documents/redemptions.txt.tmp
+mv /home/pi/Documents/redemptions.txt.tmp /home/pi/Documents/redemptions.txt
