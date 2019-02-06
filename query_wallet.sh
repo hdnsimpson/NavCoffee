@@ -28,7 +28,7 @@ mv /home/pi/Documents/txn_history.txt.tmp /home/pi/Documents/txn_history.txt
 total_received="$(LC_NUMERIC="C" awk '{sum += $1} END {print sum}' txn_history.txt)"
 
 # Calculate coffees donated
-coffees="$(echo $(("${total_received}" / 5)))"
+coffees="$(echo "$total_received/5" | bc)"
 
 # Write coffees donated
 echo "${coffees}" > /home/pi/Documents/coffees_donated.txt.tmp
